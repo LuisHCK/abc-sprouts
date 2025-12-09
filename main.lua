@@ -28,8 +28,9 @@ function love.update(dt)
 end
 
 function love.draw()
-    local overlay = love.graphics.newImage("assets/test-overlay.png")
-    love.graphics.draw(overlay, 0, 0, 0, RESOLUTION.width / overlay:getWidth(), RESOLUTION.height / overlay:getHeight())
+    -- Enable this only on development
+    -- local overlay = love.graphics.newImage("assets/test-overlay.png")
+    -- love.graphics.draw(overlay, 0, 0, 0, RESOLUTION.width / overlay:getWidth(), RESOLUTION.height / overlay:getHeight())
 
     -- Called every frame to draw on screen
     scenery:draw()
