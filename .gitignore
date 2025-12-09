@@ -1,0 +1,35 @@
+# Compiled Lua files
+*.luac
+
+# LuaRocks files
+*.rock
+*.rockspec
+
+# Dependency directories
+/deps/
+/vendor/
+/modules/
+
+# Output directories
+/build/
+/dist/
+/bin/
+/out/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.vscode/
+.idea/
+*.code-workspace
+
+# Test/coverage
+/coverage/
+/test-results/
