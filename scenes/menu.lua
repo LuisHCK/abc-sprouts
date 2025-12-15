@@ -4,7 +4,7 @@ local game = {}
 local scaling = require("libs.scaling")
 
 -- Constants for visual configuration
-local ICON_SCALE = 0.6 -- Base scale of the icon relative to screen
+local ICON_SCALE = 0.4 -- Base scale of the icon relative to screen
 local PULSE_SPEED = 1.5 -- Speed of the pulsating animation
 local TITLE = "ABC Sprouts" -- Game title text
 local CTA = "Touch to Start" -- Call to action text
@@ -24,11 +24,11 @@ function game:draw()
     local screenHeight = love.graphics.getHeight()
 
     -- Draw the Title
-    local font = love.graphics.newFont("assets/fredoka-bold.ttf", 42)
+    local font = love.graphics.newFont("assets/fredoka-bold.ttf", 40)
     love.graphics.setColor(love.math.colorFromBytes(140, 168, 201)) -- Light blue color
     love.graphics.setFont(font)
     local textWidth = font:getWidth(TITLE)
-    love.graphics.printf(TITLE, 0, 30, screenWidth, "center")
+    love.graphics.printf(TITLE, 0, screenHeight * 0.05, screenWidth, "center")
     love.graphics.setColor(1, 1, 1) -- Reset color to white
 
     -- Draw the "Touch to Start" text at the bottom
@@ -37,7 +37,7 @@ function game:draw()
     local ctaTextWidth = ctaFont:getWidth(CTA)
     local ctaTextHeight = ctaFont:getHeight()
     love.graphics.setColor(love.math.colorFromBytes(237, 203, 185)) -- Beige color
-    love.graphics.printf(CTA, 0, screenHeight - ctaTextHeight - 48, screenWidth, "center")
+    love.graphics.printf(CTA, 0, screenHeight - ctaTextHeight - 32, screenWidth, "center")
     love.graphics.setColor(1, 1, 1) -- Reset color
 
     -- Load UI sprite if not already loaded (lazy loading)
@@ -96,6 +96,12 @@ end
 
 function game:switchScene()
     self.setScene("gamescene")
+end
+
+function game:keyreleased(key)
+    if key == "escape" then
+        love.event.quit()
+    end
 end
 
 return game

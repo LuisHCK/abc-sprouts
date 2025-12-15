@@ -8,6 +8,8 @@ local LETTER_DELAY = 1.5
 local FADE_DURATION = 1.0
 local LETTER_SPRITE_WIDTH = 390
 local LETTER_SPRITE_HEIGHT = 320
+local FLOWER_SCALE = 0.8
+local ALPHABET_SCALE = 0.5
 local ALPHABET_IMAGE_PATH = "assets/alphabet.png"
 
 function game:load()
@@ -17,14 +19,14 @@ function game:load()
     print("This is the game scene")
     -- Initialize flower animation: 200x170 frames (fits 1600x170 image), 0.1s duration, looping
     self.flower = Animation.new("assets/flower-1.png", 200, 170, 0.1, false)
-    self.flower:setScale(1.5)
+    self.flower:setScale(FLOWER_SCALE)
     self.flower:setSpeed(0.5)
 
     -- Initialize alphabet using Animation lib (treated as a static sprite sheet)
     self.alphabet = Animation.new(ALPHABET_IMAGE_PATH, LETTER_SPRITE_WIDTH, LETTER_SPRITE_HEIGHT, 1, false)
     self.alphabet:stop() -- We control frames manually
     self.alphabet.currentFrame = 1 -- 'A'
-    self.alphabet:setScale(0.6)
+    self.alphabet:setScale(ALPHABET_SCALE)
 
     -- State
     self.animationEnded = false
@@ -93,6 +95,12 @@ function game:update(dt)
         end
     end
     self.wasDown = isDown
+end
+
+function game:keyreleased(key)
+    if key == "escape" then
+        self.setScene("menu")
+    end
 end
 
 return game
